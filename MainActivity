@@ -1,0 +1,29 @@
+package com.example.autocompletetextview;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    AutoCompleteTextView autoCompleteTextView;
+    String[] CountryNames;
+    ArrayAdapter<String> adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        autoCompleteTextView=(AutoCompleteTextView)findViewById(R.id.AutoTextId);
+        CountryNames=getResources().getStringArray(R.array.country);
+
+        adapter=new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,CountryNames);
+        autoCompleteTextView.setThreshold(1);
+        autoCompleteTextView.setAdapter(adapter);
+
+    }
+}
